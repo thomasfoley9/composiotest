@@ -1,0 +1,97 @@
+{
+  "name": "Simple Tasks",
+  "description": "Single-tool tasks for basic benchmarking of Tool Router capabilities",
+  "tasks": [
+    {
+      "id": "gmail_list",
+      "task": "List my 5 most recent unread emails",
+      "description": "Basic Gmail fetch with filters",
+      "expected_tools": ["GMAIL_FETCH_EMAILS"],
+      "expected_params": {
+        "max_results": 5,
+        "query": "is:unread"
+      },
+      "required_keywords": ["gmail", "email", "unread"],
+      "difficulty": "easy",
+      "tags": ["gmail", "read"]
+    },
+    {
+      "id": "slack_message",
+      "task": "Send a message saying 'Hello team!' to the #general channel",
+      "description": "Basic Slack message send",
+      "expected_tools": ["SLACK_SEND_MESSAGE"],
+      "expected_params": {
+        "channel": "general",
+        "text": "Hello team!"
+      },
+      "required_keywords": ["slack", "message"],
+      "difficulty": "easy",
+      "tags": ["slack", "write"]
+    },
+    {
+      "id": "calendar_events",
+      "task": "Show me my calendar events for today",
+      "description": "Google Calendar event listing",
+      "expected_tools": ["GOOGLECALENDAR_FIND_EVENT"],
+      "required_keywords": ["calendar", "event"],
+      "difficulty": "easy",
+      "tags": ["calendar", "read"]
+    },
+    {
+      "id": "github_issues",
+      "task": "List open issues in the composio/composio repository",
+      "description": "GitHub issues listing",
+      "expected_tools": ["GITHUB_LIST_ISSUES"],
+      "expected_params": {
+        "owner": "composio",
+        "repo": "composio",
+        "state": "open"
+      },
+      "required_keywords": ["github", "issue"],
+      "difficulty": "easy",
+      "tags": ["github", "read"]
+    },
+    {
+      "id": "notion_search",
+      "task": "Search for pages mentioning 'project roadmap' in Notion",
+      "description": "Notion search functionality",
+      "expected_tools": ["NOTION_SEARCH"],
+      "expected_params": {
+        "query": "project roadmap"
+      },
+      "required_keywords": ["notion", "search"],
+      "difficulty": "easy",
+      "tags": ["notion", "search"]
+    },
+    {
+      "id": "linear_issues",
+      "task": "Get my assigned Linear issues",
+      "description": "Linear issue retrieval",
+      "expected_tools": ["LINEAR_GET_ISSUES"],
+      "required_keywords": ["linear", "issue"],
+      "difficulty": "easy",
+      "tags": ["linear", "read"]
+    },
+    {
+      "id": "twitter_post",
+      "task": "Post a tweet saying 'Testing Composio Tool Router!'",
+      "description": "Twitter/X posting",
+      "expected_tools": ["TWITTER_CREATE_TWEET"],
+      "expected_params": {
+        "text": "Testing Composio Tool Router!"
+      },
+      "required_keywords": ["twitter", "tweet"],
+      "difficulty": "easy",
+      "tags": ["twitter", "write"]
+    },
+    {
+      "id": "dropbox_list",
+      "task": "List files in my Dropbox root folder",
+      "description": "Dropbox file listing",
+      "expected_tools": ["DROPBOX_LIST_FILES"],
+      "required_keywords": ["dropbox", "file", "list"],
+      "difficulty": "easy",
+      "tags": ["dropbox", "read"]
+    }
+  ]
+}

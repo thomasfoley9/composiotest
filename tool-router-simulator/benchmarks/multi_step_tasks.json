@@ -1,0 +1,79 @@
+{
+  "name": "Multi-Step Tasks",
+  "description": "Tasks requiring multiple tools or sequential steps",
+  "tasks": [
+    {
+      "id": "slack_to_sheet",
+      "task": "Find all messages in the #engineering Slack channel from today and add them to a Google Sheet",
+      "description": "Cross-app data transfer from Slack to Google Sheets",
+      "expected_tools": ["SLACK_SEARCH_MESSAGES", "GOOGLESHEETS_BATCH_UPDATE"],
+      "expected_flow": ["search_tools", "execute_slack", "execute_sheets"],
+      "required_keywords": ["slack", "sheet", "message"],
+      "difficulty": "medium",
+      "tags": ["slack", "sheets", "multi-step", "data-transfer"]
+    },
+    {
+      "id": "email_to_task",
+      "task": "Find emails from john@example.com and create a task for each unread email in Todoist",
+      "description": "Email to task conversion workflow",
+      "expected_tools": ["GMAIL_FETCH_EMAILS", "TODOIST_CREATE_TASK"],
+      "required_keywords": ["email", "gmail", "todoist", "task"],
+      "difficulty": "medium",
+      "tags": ["gmail", "todoist", "multi-step"]
+    },
+    {
+      "id": "pr_review_summary",
+      "task": "Get all open PRs in my-org/my-repo and summarize them in a Slack message to #dev-updates",
+      "description": "GitHub PR summary to Slack",
+      "expected_tools": ["GITHUB_LIST_PULL_REQUESTS", "SLACK_SEND_MESSAGE"],
+      "required_keywords": ["github", "pull request", "slack"],
+      "difficulty": "medium",
+      "tags": ["github", "slack", "multi-step"]
+    },
+    {
+      "id": "meeting_notes",
+      "task": "Get my last 3 calendar meetings and create a Notion page with notes template for each",
+      "description": "Calendar to Notion integration",
+      "expected_tools": ["GOOGLECALENDAR_FIND_EVENT", "NOTION_CREATE_PAGE"],
+      "required_keywords": ["calendar", "meeting", "notion"],
+      "difficulty": "hard",
+      "tags": ["calendar", "notion", "multi-step"]
+    },
+    {
+      "id": "daily_standup",
+      "task": "Collect yesterday's GitHub commits from my-org/*, Jira tickets I updated, and post a summary to #standup",
+      "description": "Complex multi-source aggregation for standup",
+      "expected_tools": ["GITHUB_LIST_COMMITS", "JIRA_GET_ISSUES", "SLACK_SEND_MESSAGE"],
+      "required_keywords": ["github", "jira", "slack", "commit"],
+      "difficulty": "hard",
+      "tags": ["github", "jira", "slack", "multi-step", "aggregation"]
+    },
+    {
+      "id": "invoice_workflow",
+      "task": "Get unpaid invoices from Stripe over $1000 and create a Linear ticket for each",
+      "description": "Financial data to task management",
+      "expected_tools": ["STRIPE_LIST_INVOICES", "LINEAR_CREATE_ISSUE"],
+      "required_keywords": ["stripe", "invoice", "linear"],
+      "difficulty": "medium",
+      "tags": ["stripe", "linear", "multi-step", "financial"]
+    },
+    {
+      "id": "customer_feedback",
+      "task": "Get recent Intercom conversations tagged 'bug' and create GitHub issues for each",
+      "description": "Customer support to development workflow",
+      "expected_tools": ["INTERCOM_LIST_CONVERSATIONS", "GITHUB_CREATE_ISSUE"],
+      "required_keywords": ["intercom", "github", "bug", "issue"],
+      "difficulty": "medium",
+      "tags": ["intercom", "github", "multi-step", "support"]
+    },
+    {
+      "id": "content_publish",
+      "task": "Get the latest draft from my Notion 'Blog Posts' database and publish it to Medium",
+      "description": "Content management workflow",
+      "expected_tools": ["NOTION_QUERY_DATABASE", "MEDIUM_CREATE_POST"],
+      "required_keywords": ["notion", "medium", "blog", "publish"],
+      "difficulty": "hard",
+      "tags": ["notion", "medium", "multi-step", "content"]
+    }
+  ]
+}
