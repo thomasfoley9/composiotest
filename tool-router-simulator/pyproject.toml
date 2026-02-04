@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tool-router-simulator"
+name = "composio-tool-router-sim"
 version = "0.1.0"
 description = "Benchmark tool for testing LLM models with Composio's Tool Router"
 readme = "README.md"
@@ -12,7 +12,7 @@ license = {text = "MIT"}
 authors = [
     {name = "Composio", email = "support@composio.dev"}
 ]
-keywords = ["composio", "llm", "benchmark", "tool-router", "ai-agents"]
+keywords = ["composio", "llm", "benchmark", "tool-router", "ai-agents", "rube"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -22,6 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Environment :: Console",
 ]
 
 dependencies = [
@@ -39,19 +40,25 @@ dev = [
     "black>=23.0.0",
     "ruff>=0.1.0",
     "mypy>=1.0.0",
+    "build>=1.0.0",
+    "twine>=4.0.0",
 ]
 
 [project.scripts]
-tool-router-sim = "src.main:main"
+tool-router-sim = "tool_router_sim.main:main"
 
 [project.urls]
 Homepage = "https://github.com/composio/tool-router-simulator"
 Documentation = "https://docs.composio.dev"
 Repository = "https://github.com/composio/tool-router-simulator"
+Issues = "https://github.com/composio/tool-router-simulator/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["src*"]
+include = ["tool_router_sim*"]
+
+[tool.setuptools.package-data]
+tool_router_sim = ["py.typed"]
 
 [tool.black]
 line-length = 88
@@ -71,4 +78,4 @@ disallow_untyped_defs = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
-addopts = "-v --cov=src --cov-report=term-missing"
+addopts = "-v --cov=tool_router_sim --cov-report=term-missing"
