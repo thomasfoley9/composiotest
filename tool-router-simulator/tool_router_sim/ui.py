@@ -1,14 +1,19 @@
 """Streamlit web UI for the Tool Router Simulator."""
 
+import sys
+from pathlib import Path
+
+# Add parent directory to path for Streamlit Cloud compatibility
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import json
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
-from pathlib import Path
 
 import streamlit as st
 
-from .config import (
+from tool_router_sim.config import (
     ALL_MODELS,
     VERCEL_MODELS,
     GROQ_MODELS,
@@ -16,13 +21,13 @@ from .config import (
     Provider,
     ModelConfig,
 )
-from .composio_client import create_client, ComposioClient
-from .simulator.runner import SimulationResult
-from .simulator.vercel_runner import create_vercel_runner
-from .simulator.groq_runner import create_groq_runner
-from .simulator.bedrock_runner import create_bedrock_runner
-from .evaluator.scorer import CompositeScorer, BenchmarkScore
-from .benchmark.tasks import get_builtin_suite, get_all_builtin_tasks
+from tool_router_sim.composio_client import create_client, ComposioClient
+from tool_router_sim.simulator.runner import SimulationResult
+from tool_router_sim.simulator.vercel_runner import create_vercel_runner
+from tool_router_sim.simulator.groq_runner import create_groq_runner
+from tool_router_sim.simulator.bedrock_runner import create_bedrock_runner
+from tool_router_sim.evaluator.scorer import CompositeScorer, BenchmarkScore
+from tool_router_sim.benchmark.tasks import get_builtin_suite, get_all_builtin_tasks
 
 
 def get_runner_for_model(model_name: str, client: ComposioClient):
